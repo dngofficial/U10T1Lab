@@ -1,25 +1,33 @@
 public class MainMethod
 {
-    public static void main(String[] args)
+    public static void main(String [] args)
     {
-        System.out.println(sum(6));  // should print 21
-        System.out.println(sum(10)); // should print 55
+        System.out.println(mysteryString("xyzxyyxy"));
     }
 
-    public static int sum(int n)
+    public static int mysteryString(String str)
     {
-        int total = 0;
-        if (n == 1)
+        if (str.length() == 1) // BASE CASE
         {
-            total +=1;
-            return total;
+            if (str.equals("y"))
+            {
+                return 2; // doesn't involve a recursive call
+            }
+            else
+            {
+                return 0; // doesn't involve a recursive call
+            }
         }
         else
         {
-            total += n + sum(n-1);
-
+            if (str.substring(0, 1).equals("y"))
+            {
+                return 2 + mysteryString(str.substring(1));
+            }
+            else
+            {
+                return mysteryString(str.substring(1));
+            }
         }
-        return total;
-
     }
 }
